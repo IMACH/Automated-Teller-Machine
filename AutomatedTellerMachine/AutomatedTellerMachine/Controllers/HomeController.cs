@@ -34,5 +34,17 @@ namespace AutomatedTellerMachine.Controllers
         {
             return View("About"); 
         }
+
+        //Returns the serial number of the atm with serial number route
+        public ActionResult Serial(string letterCase)
+        {
+            var serial = "ASPNETMVC5ATM1"; 
+
+            if (letterCase == "lower")
+            {
+                return Content(serial.ToLower()); 
+            }
+            return Content(serial); 
+        }
     }
 }
