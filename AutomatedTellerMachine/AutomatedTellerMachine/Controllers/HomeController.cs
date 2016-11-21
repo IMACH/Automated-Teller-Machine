@@ -15,16 +15,28 @@ namespace AutomatedTellerMachine.Controllers
         }
 
         // GET /home/about
+        //Use this if you want the urp to display with dashes, this will look for the view with this name (about-this-atm)
+        [ActionName("about-this-atm")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            //Instead you can still pass the About video into the View method. 
+            return View("About");
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.TheMessage = "Having trouble? Send us a message.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string message)
+        {
+            //TODO : send message to HQ
+            ViewBag.TheMessage = "Thanks, we got your message!";
 
             return View();
         }
@@ -52,7 +64,7 @@ namespace AutomatedTellerMachine.Controllers
             //JsonRequestBehavior.AllowGet); 
 
             //RedirectToActionRequest
-            return RedirectToAction("Index"); 
+            return RedirectToAction("Index");
 
         }
     }
